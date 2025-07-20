@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules Scripts</title>
+    <style>
+        /* Estilos Gerais (Tema Escuro Roxo) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e; /* Fundo principal: roxo muito escuro */
+            color: #e0e0e0; /* Cor do texto padrão: cinza claro */
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 25px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #0f0f1d; /* Roxo mais escuro para o cabeçalho */
+            color: #ffffff; /* Texto branco */
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navegação */
+        nav {
+            margin-top: 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #a788e0; /* Roxo claro para os links da nav */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #2e2e4e; /* Roxo ligeiramente mais claro no hover */
+            color: #ffffff; /* Texto branco no hover */
+        }
+
+        /* Seções */
+        section {
+            background-color: #2a2a4a; /* Fundo das seções: roxo escuro */
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        section h2 {
+            color: #be7edc; /* Roxo vibrante para títulos de seção */
+            font-size: 2em;
+            margin-top: 0;
+            border-bottom: 2px solid #5a4b7f; /* Linha roxa suave */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Lista de Módulos */
+        .module-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .module-item {
+            border: 1px solid #4a4a7a; /* Borda roxa escura */
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #3a3a5a; /* Fundo do item: roxo médio */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .module-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .module-item h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #e0b0ff; /* Roxo claro brilhante para título do item */
+        }
+
+        .module-item p {
+            font-size: 0.95em;
+            color: #c0c0c0; /* Cinza claro para descrição */
+            margin-bottom: 15px;
+        }
+
+        .module-item .view-tutorial-link {
+            display: inline-block;
+            background-color: #8a2be2; /* Roxo violeta para o botão */
+            color: white;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .module-item .view-tutorial-link:hover {
+            background-color: #7b1ad1; /* Roxo mais escuro no hover */
+        }
+
+        /* Detalhes do Módulo/Tutorial */
+        .module-detail h3 {
+            color: #be7edc; /* Roxo vibrante */
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .module-detail p strong {
+            color: #d0d0d0; /* Cinza mais claro para strong */
+        }
+
+        .module-detail .download-button {
+            display: inline-block;
+            background-color: #4CAF50; /* Verde padrão, contrasta bem com roxo */
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            margin-top: 25px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .module-detail .download-button:hover {
+            background-color: #45a049;
+        }
+
+        .module-detail pre {
+            background-color: #0d0d1a; /* Fundo do bloco de código: roxo muito escuro */
+            border: 1px solid #5a4b7f; /* Borda roxa suave */
+            padding: 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace; /* Fonte para código */
+            font-size: 0.95em;
+            white-space: pre-wrap; /* Quebra de linha para código longo */
+            word-break: break-all; /* Quebra de palavras para evitar estouro */
+            color: #a788e0; /* Cor do texto do código: roxo claro */
+            position: relative;
+        }
+
+        .module-detail pre code {
+            display: block; /* Garante que o conteúdo pre-wrap funcione */
+        }
+
+        .module-detail ol, .module-detail ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #c0c0c0; /* Cor da lista */
+        }
+
+        .module-detail li {
+            margin-bottom: 10px;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            background-color: #0f0f1d; /* Roxo mais escuro */
+            color: #a788e0; /* Roxo claro */
+            border-top: 1px solid #4a4a7a;
+            font-size: 0.9em;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Esconder/Mostrar conteúdo dos módulos usando JavaScript simples */
+        .module-content {
+            display: none; /* Esconde o conteúdo por padrão */
+        }
+
+        .module-content.active {
+            display: block; /* Mostra o conteúdo quando ativo */
+        }
+
+        .back-to-list {
+            display: none; /* Esconde por padrão */
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .back-to-list.active {
+            display: block; /* Mostra quando o módulo está visível */
+        }
+        .back-to-list a {
+            color: #a788e0; /* Roxo claro */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .back-to-list a:hover {
+            color: #ffffff; /* Branco no hover */
+        }
+
+
+        /* Para dispositivos menores */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .container {
+                padding: 0 15px;
+            }
+            section {
+                padding: 20px;
+            }
+            .module-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Modules Scripts</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#modulos">Módulos</a></li>
+                <li><a href="#sobre">Sobre Mim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="home">
+            <h2>Bem-vindo!</h2>
+            <p>Este é o meu acervo pessoal de módulos e scripts úteis. Aqui você encontrará ferramentas e códigos que desenvolvi para diversas finalidades, desde automação de tarefas até análise de dados e utilitários. Navegue pela lista de módulos para explorar o que está disponível e aprenda como utilizá-los através dos tutoriais detalhados.</p>
+            <p>Sinta-se à vontade para baixar os arquivos e adaptá-los às suas necessidades!</p>
+        </section>
+
+        ---
+
+        <section id="modulos">
+            <h2>Módulos Disponíveis</h2>
+            <div class="module-list">
+                <div class="module-item">
+                    <h3>CommandManeger</h3>
+                    <p>Um script Lua simples para criar comandos na roblox de forma facilitada.</p>
+                    <a href="#" class="view-tutorial-link" data-module-id="organizacao-arquivos">Ver Tutorial</a>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section class="module-content" id="module-content-organizacao-arquivos">
+            <p class="back-to-list active"><a href="#" onclick="showSection('modulos'); return false;">&laquo; Voltar para a lista de módulos</a></p>
+            <div class="module-detail">
+                <h2>Command Maneger</h2>
+                <p><strong>Descrição:</strong> Este script Lua foi projetado para ajudá-lo a criar comandos no roblox studio de forma mais facil.</p>
+
+                <h3>Como Usar:</h3>
+                <ol>
+                    <li><strong>Baixe o Script:</strong>
+                        <a href="https://github.com/Nigth613/CommandModule/releases/tag/RobloxModules" class="download-button" download>Baixar o module</a>
+                    </li>
+                    <li><strong>Onde Colocar:</strong>
+                        <p>Salve o arquivo `CommandModule.lua` em qualquer pasta em seu computador. Para facilitar, você pode colocá-lo em uma pasta na area de trabalho.</p>
+                    </li>
+                    <li><strong>Configuração (dentro do Script):</strong>
+                        <p>Crie um Script no ServerScriptService para criar os comandos,você pode usar o 'Create' para criar os comandos e oque eles fazem, e o 'Call' para chamar os comandos</p>
+                        <pre><code>
+-- Configuração
+local PREFIX = "/" -- Você pode mudar para "!" ou ":"
+local ADMIN_NAMES = { "kigbloxyt" }
+                        </code></pre>
+                        <p>Altere `PREFIX` para mudar oque vai chamar o comando exemplo '/Kick', Agora se eu mudar o `PREFIX` para ':' vai ficar assim ':Kick', mude o `ADMIN_NAMES` para seu nick no roblox</p>
+                    </li>
+                </ol>
+
+                <h3>Código do Script (completo para referência):</h3>
+                <pre><code class="language-python">
+-- Serviços
+local Players = game:GetService("Players")
+
+-- Módulo
+local CommandManager = require(game.ReplicatedStorage.CommandManeger)
+
+-- Configuração
+local PREFIX = "/" -- Você pode mudar para "!" ou ":"
+local ADMIN_NAMES = { "kigbloxyt" }
+
+-- Utilitário para verificar se o jogador é admin
+local function isAdmin(player)
+	for _, name in ipairs(ADMIN_NAMES) do
+		if player.Name == name then
+			return true
+		end
+	end
+	return false
+end
+
+-- Comando de Kick (exemplo funcional)
+CommandManager:Create("kick", 2)(function(targetName, reason)
+	local target = Players:FindFirstChild(targetName)
+	if target then
+		target:Kick(reason or "Você foi expulso.")
+	else
+		warn("Jogador não encontrado:", targetName)
+	end
+end)
+
+-- Escutar o jogador que é admin
+Players.PlayerAdded:Connect(function(player)
+	if isAdmin(player) then
+		player.Chatted:Connect(function(msg)
+			-- Verifica se a mensagem começa com o prefixo
+			if msg:sub(1, #PREFIX) == PREFIX then
+				local content = msg:sub(#PREFIX + 1) -- remove o prefixo
+				local args = string.split(content, " ")
+
+				local commandName = args[1]:lower()
+				table.remove(args, 1) -- remove o nome do comando dos args
+
+				local success, err = pcall(function()
+					CommandManager:Call(commandName, table.unpack(args))
+				end)
+
+				if not success then
+					warn("Erro ao executar comando:", err)
+				end
+			end
+		end)
+	end
+end)
+</code></pre>
+            </div>
+        </section>
+
+        ---
+
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <p>Olá! Meu nome é Night. Sou um programador e adoro criar ferramentas e scripts para automatizar tarefas na roblox e resolver problemas.</p>
+            <p>Este site é um espaço para compartilhar alguns dos meus projetos e ajudar outras pessoas a aprenderem e utilizarem essas soluções.</p>
+            <a href="https://github.com/Nigth613" target="_blank">Meu GitHub</a>
+        </section>
+    </div>
+
+    <script>
+        // Função para mostrar a seção de um módulo e esconder as outras
+        function showModule(moduleId) {
+            document.getElementById('modulos').style.display = 'none'; // Esconde a lista de módulos
+            document.getElementById('home').style.display = 'none'; // Esconde a seção Home
+            document.getElementById('sobre').style.display = 'none'; // Esconde a seção Sobre Mim
+
+            // Esconde todos os conteúdos de módulos
+            document.querySelectorAll('.module-content').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostra o conteúdo do módulo clicado
+            const moduleContent = document.getElementById('module-content-' + moduleId);
+            if (moduleContent) {
+                moduleContent.classList.add('active');
+            }
+
+            // Mostra o botão "Voltar para a lista"
+            document.querySelectorAll('.back-to-list').forEach(btn => {
+                btn.classList.add('active');
+            });
+
+            // Rolagem suave para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Função para mostrar uma seção principal (Home, Módulos, Sobre)
+        function showSection(sectionId) {
+            // Esconde todas as seções principais e de conteúdo de módulo
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('modulos').style.display = 'none';
+            document.getElementById('sobre').style.display = 'none';
+            document.querySelectorAll('.module-content').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.back-to-list').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Mostra a seção desejada
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Rolagem suave para a seção
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Adicionar listeners aos links "Ver Tutorial"
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.view-tutorial-link').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Previne o comportamento padrão do link
+                    const moduleId = this.getAttribute('data-module-id');
+                    showModule(moduleId);
+                });
+            });
+
+            // Configura o comportamento dos links da navegação para mostrar as seções
+            document.querySelector('nav ul').addEventListener('click', function(event) {
+                if (event.target.tagName === 'A' && event.target.getAttribute('href').startsWith('#')) {
+                    event.preventDefault();
+                    const sectionId = event.target.getAttribute('href').substring(1);
+                    showSection(sectionId);
+                }
+            });
+
+            // Mostra a seção Home por padrão ao carregar
+            showSection('home');
+        });
+    </script>
+</body>
+</html>
